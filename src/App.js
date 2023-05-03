@@ -1,16 +1,12 @@
-import * as React from "react";
+import jsonServerProvider from "ra-data-json-server";
 import { Admin, Resource } from "react-admin";
-import { UserList, UserCreate, UserEdit } from "./components/users";
-import dataProvider from "./data-provider";
+import { UserCreate, UserEdit, UserList } from "./users/Users";
+
+const dataProvider = jsonServerProvider("http://localhost:8001");
 
 const App = () => (
 	<Admin dataProvider={dataProvider}>
-		<Resource
-			name="users"
-			list={UserList}
-			create={UserCreate}
-			edit={UserEdit}
-		/>
+		<Resource name="users" list={UserList} create={UserCreate} />
 	</Admin>
 );
 
